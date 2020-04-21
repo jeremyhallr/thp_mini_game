@@ -49,7 +49,7 @@ while (player_1.life_points > 0 || player_2.life_points > 0) &&user_player.life_
     puts "Oups... erreur de manip'. Un tour pour rien..."
   end
 
-  sleep(1)
+  sleep(0.5)
 
   ennemies.each {|ennemy|
     if ennemy.life_points > 0
@@ -58,7 +58,7 @@ while (player_1.life_points > 0 || player_2.life_points > 0) &&user_player.life_
     end
     }
 
-  sleep(1)
+  sleep(0.5)
 
   puts "------------------------------------------------"
 end

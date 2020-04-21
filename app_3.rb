@@ -17,6 +17,7 @@ my_game = Game.new(player_name)
 
 while my_game.is_still_ongoing?
   puts "-------------------------------------------------"
+  my_game.new_players_in_sight
   my_game.show_players
   my_game.menu
   my_game.menu_choice
