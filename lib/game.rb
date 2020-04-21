@@ -14,12 +14,13 @@ class Game
     @enemies_in_sight.each do |enemy|
       if enemy.name == player
         @enemies_in_sight.delete(enemy)
+        @players_left -= 1
       end
     end
   end
 
   def is_still_ongoing?
-    @human_player.life_points > 0 && @enemies != []
+    @human_player.life_points > 0 &&@enemies_in_sight != []
   end
 
   def show_players
@@ -62,16 +63,16 @@ class Game
   end
 
   def enemies_attack
-    @enemies_in_sight.each {|enemy|
-      if enemy.life_points > 0
-        puts "\n!!! #{enemy.name} attaque !!!"
-      enemy.attacks(@human_player)
-    end
-    }
+      @enemies_in_sight.each {|enemy|
+        if enemy.life_points > 0 && @human_player.life_points > 0
+          puts "\n!!! #{enemy.name} attaque !!!"
+          enemy.attacks(@human_player)
+        end
+      }
   end
 
   def new_players_in_sight
-    if @players_left == @enemies_in_sight
+    if @enemies_in_sight.length >= @players_left
       puts "Tous les joueurs sont déjà en vue."
     else
       player_generator = rand(1..6)
@@ -85,6 +86,7 @@ class Game
         name_gen_1 = "enemy_" + rand(1..9999).to_s
         name_gen_2 = "enemy_" + rand(1..9999).to_s
         @enemies_in_sight << Player.new(name_gen_1) << Player.new(name_gen_2)
+        puts "Attention ! #{name_gen_1} et #{name_gen_2} arrivent pour la castagne !"
       end
     end
   end

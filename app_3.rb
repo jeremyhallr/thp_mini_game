@@ -14,6 +14,7 @@ puts "\nQuel sera ton honorable nom ?"
 print "> "
 player_name = gets.chomp
 my_game = Game.new(player_name)
+my_game.new_players_in_sight
 
 while my_game.is_still_ongoing?
   puts "-------------------------------------------------"
@@ -25,5 +26,3 @@ while my_game.is_still_ongoing?
 end
 
 my_game.end
-
-binding.pry

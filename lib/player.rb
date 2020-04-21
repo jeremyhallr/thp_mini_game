@@ -22,14 +22,16 @@ class Player
   end
 
   def attacks(player_attacked)
-    puts "#{name} attaque #{player_attacked.name}"
-    damage_inflicted = compute_damage
-    puts "Il lui inflige #{damage_inflicted} points de dommage"
-    player_attacked.gets_damage(damage_inflicted)
+    if player_attacked.life_points > 0
+      puts "#{name} attaque #{player_attacked.name}"
+      damage_inflicted = compute_damage
+      puts "Il lui inflige #{damage_inflicted} points de dommage"
+      player_attacked.gets_damage(damage_inflicted)
+    end
   end
 
   def compute_damage
-    return rand(1..6)
+    return rand(1..5)
   end
 
 end
